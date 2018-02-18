@@ -1,2 +1,2 @@
-# Java-Spring-Restful-CRUD-API
-Small demo
+# Java Spring Restful CRUD API - Simple Note Taking Application
+
