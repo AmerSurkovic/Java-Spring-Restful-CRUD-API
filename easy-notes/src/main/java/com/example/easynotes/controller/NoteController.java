@@ -1,7 +1,10 @@
 package com.example.easynotes.controller;
 
+import com.example.easynotes.model.Category;
 import com.example.easynotes.model.Note;
+import com.example.easynotes.repository.CategoryRepository;
 import com.example.easynotes.repository.NoteRepository;
+import com.example.easynotes.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,20 +22,21 @@ import java.util.List;
 public class NoteController {
 
     @Autowired
-    NoteRepository noteRepository;
+    NoteService noteService;
 
     // Get All Notes
     @GetMapping("/notes")
     public List<Note> getAllNotes(){
-        return noteRepository.findAll();
+        return noteService.getAllNotes();
     }
 
     // Create a New Note
     @PostMapping("/notes")
     public Note createNote(@Valid @RequestBody Note note){
-        return noteRepository.save(note);
+        return noteService.createNote(note);
     }
 
+    /*
     // Get a Single Note
     @GetMapping("/notes/{id}")
     public ResponseEntity<Note> getNoteById(@PathVariable(value="id") Long noteId) {
@@ -68,5 +72,5 @@ public class NoteController {
 
         noteRepository.delete(note);
         return ResponseEntity.ok().build();
-    }
+    }*/
 }
