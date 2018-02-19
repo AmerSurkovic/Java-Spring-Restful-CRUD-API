@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.xml.ws.Response;
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -27,7 +28,8 @@ public class NoteController {
 
     // Get All Notes
     @GetMapping("/notes")
-    public List<Note> getAllNotes(){
+    public List<Note> getAllNotes(Principal principal){
+
         return noteService.getAllNotes();
     }
 
